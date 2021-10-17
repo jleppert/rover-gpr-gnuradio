@@ -1,6 +1,7 @@
 '[Core]':
 - Soapy:
   - Source:
+    - soapy_xtrx_source
     - soapy_rtlsdr_source
     - soapy_airspyhf_source
     - soapy_hackrf_source
@@ -10,6 +11,7 @@
     - soapy_sdrplay_source
     - soapy_custom_source
   - Sink:
+    - soapy_xtrx_sink
     - soapy_hackrf_sink
     - soapy_plutosdr_sink
     - soapy_limesdr_sink
