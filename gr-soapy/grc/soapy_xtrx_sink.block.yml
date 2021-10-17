@@ -126,7 +126,7 @@ parameters:
     dtype: bool
     default: 'False'
     options: ['False', 'True']
-    hide: ${ 'all' if nchan <= 1 }
+    hide: ${ 'all' if nchan <= 1 else 'none' }
 -   id: center_freq1
     label: 'Ch1: Center Freq (Hz)'
     category: RF Options
