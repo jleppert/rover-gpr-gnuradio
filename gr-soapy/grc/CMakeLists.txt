@@ -23,5 +23,7 @@ install(FILES
     soapy_sdrplay_source.block.yml
     soapy_custom_source.block.yml
     soapy_custom_sink.block.yml
+    soapy_xtrx_pro_source.block.yml
+    soapy_xtrx_pro_sink.block.yml
     DESTINATION share/gnuradio/grc/blocks
 )
