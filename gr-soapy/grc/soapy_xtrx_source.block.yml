@@ -14,9 +14,9 @@ parameters:
   - id: devname
     label: Device Type
     dtype: enum
-    default: 'xtrxsoapy'
-    options: ['xtrxsoapy']
-    option_labels: ['xtrxsoapy']
+    default: 'xtrx'
+    options: ['xtrx']
+    option_labels: ['xtrx']
 
   - id: dev
     label: Device String
@@ -103,7 +103,7 @@ parameters:
     category: RF Options
     dtype: float
     default: '24'
-    hide: ${ 'none' if ( (devname in ['uhd', 'plutosdr', 'xtrxsoapy', 'lime'])
+    hide: ${ 'none' if ( (devname in ['uhd', 'plutosdr', 'xtrx', 'lime'])
              and gain_mode0 == 'Specific' ) else 'all' }
 
   - id: lna_gain0
@@ -111,7 +111,7 @@ parameters:
     category: RF Options
     dtype: float
     default: '10'
-    hide: ${ 'none' if ( (devname in ['xtrxsoapy'])
+    hide: ${ 'none' if ( (devname in ['xtrx'])
              and gain_mode0 == 'Specific'  ) else 'all' }
 
   - id: tia_gain0
@@ -119,7 +119,7 @@ parameters:
     category: RF Options
     dtype: float
     default: '0'
-    hide: ${ 'none' if ( (devname in ['xtrxsoapy'])
+    hide: ${ 'none' if ( (devname in ['xtrx'])
              and gain_mode0 == 'Specific'  ) else 'all' }
 
   - id: ant0
@@ -252,7 +252,7 @@ parameters:
     category: RF Options
     dtype: float
     default: '24'
-    hide: ${ 'none' if ( (devname in ['xtrxsoapy'])
+    hide: ${ 'none' if ( (devname in ['xtrx'])
              and gain_mode1 == 'Specific' and nchan > 1) else 'all' }
 
   - id: lna_gain1
@@ -260,7 +260,7 @@ parameters:
     category: RF Options
     dtype: float
     default: '10'
-    hide: ${ 'none' if ( (devname in ['xtrxsoapy'])
+    hide: ${ 'none' if ( (devname in ['xtrx'])
              and gain_mode1 == 'Specific' and nchan > 1) else 'all' }
 
   - id: tia_gain1
@@ -268,7 +268,7 @@ parameters:
     category: RF Options
     dtype: float
     default: '0'
-    hide: ${ 'none' if ( (devname in ['xtrxsoapy'])
+    hide: ${ 'none' if ( (devname in ['xtrx'])
           and gain_mode1 == 'Specific' and nchan > 1) else 'all' }
 
   - id: ant1
@@ -467,13 +467,13 @@ templates:
         % if context.get('gain_mode0')() == 'Overall':
             self.${id}.set_gain(0,${overall_gain0})
         % elif context.get('gain_mode0')() == 'Specific':
-            % if context.get('devname')() in  ['xtrxsoapy']:
+            % if context.get('devname')() in  ['xtrx']:
             self.${id}.set_gain(0,"PGA", ${pga_gain0})
             % endif
-            % if context.get('devname')() in ['xtrxsoapy']:
+            % if context.get('devname')() in ['xtrx']:
             self.${id}.set_gain(0,"LNA", ${lna_gain0})
             % endif
-            % if context.get('devname')() in ['xtrxsoapy']:
+            % if context.get('devname')() in ['xtrx']:
             self.${id}.set_gain(0,"TIA", ${tia_gain0})
             % endif
         % endif
@@ -486,13 +486,13 @@ templates:
         % if context.get('gain_mode1')() == 'Overall':
             self.${id}.set_gain(1,${overall_gain1})
         % elif context.get('gain_mode1')() == 'Specific':
-            % if context.get('devname')() in  ['xtrxsoapy']:
+            % if context.get('devname')() in  ['xtrx']:
             self.${id}.set_gain(1,"PGA", ${pga_gain1})
             % endif
-            % if context.get('devname')() in ['xtrxsoapy']:
+            % if context.get('devname')() in ['xtrx']:
             self.${id}.set_gain(1,"LNA", ${lna_gain1})
             % endif
-            % if context.get('devname')() in ['xtrxsoapy']:
+            % if context.get('devname')() in ['xtrx']:
             self.${id}.set_gain(1,"TIA", ${tia_gain1})
             % endif
         % endif
@@ -541,39 +541,39 @@ templates:
 
         - |
           % if context.get('gain_mode0')() == 'Specific' and \
-               context.get('devname')() in ['xtrxsoapy']:
+               context.get('devname')() in ['xtrx']:
           set_gain(0,"PGA", ${pga_gain0})
           % endif
 
         - |
           % if context.get('gain_mode0')() == 'Specific' and \
-               context.get('devname')() in ['xtrxsoapy']:
+               context.get('devname')() in ['xtrx']:
           set_gain(0,"LNA", ${lna_gain0})
           % endif
 
         - |
           % if context.get('gain_mode0')() == 'Specific' and \
-               context.get('devname')() in ['xtrxsoapy']:
+               context.get('devname')() in ['xtrx']:
           set_gain(0,"TIA", ${tia_gain0})
           % endif
 
         - |
           % if context.get('nchan')() > 1 and \
                context.get('gain_mode1')() == 'Specific' and \
-               context.get('devname')() in  ['xtrxsoapy']:
+               context.get('devname')() in  ['xtrx']:
           set_gain(1,"PGA", ${pga_gain1})
           % endif
 
         - |
           % if context.get('nchan')() > 1 and \
                context.get('gain_mode1')() == 'Specific' and \
-               context.get('devname')() in ['xtrxsoapy']:
+               context.get('devname')() in ['xtrx']:
           set_gain(1,"LNA", ${lna_gain1})
           % endif
         - |
           % if context.get('nchan')() > 1 and \
                context.get('gain_mode1')() == 'Specific' and \
-               context.get('devname')() in ['xtrxsoapy']:
+               context.get('devname')() in ['xtrx']:
           self.${id}.set_gain(1,"TIA", ${tia_gain1})
           % endif
 

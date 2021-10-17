@@ -16,9 +16,9 @@ parameters:
 -   id: devname
     label: Device Type
     dtype: enum
-    default: 'xtrxsoapy'
-    options: ['xtrxsoapy']
-    option_labels: ['xtrxsoapy']
+    default: 'xtrx'
+    options: ['xtrx']
+    option_labels: ['xtrx']
     hide: none
 -   id: dev
     label: Device String
@@ -79,7 +79,7 @@ parameters:
     category: RF Options
     dtype: float
     default: '0'
-    hide: ${ 'none' if ( ( devname == 'xtrxsoapy') and manual_gain0 ) else 'all' }
+    hide: ${ 'none' if ( ( devname == 'xtrx') and manual_gain0 ) else 'all' }
 -   id: ant0
     label: 'Ch0: Antenna'
     category: RF Options
@@ -152,7 +152,7 @@ parameters:
     category: RF Options
     dtype: float
     default: '0'
-    hide: ${ 'none' if (devname == 'xtrxsoapy') and nchan >1 and manual_gain1 else 'all' }
+    hide: ${ 'none' if (devname == 'xtrx') and nchan >1 and manual_gain1 else 'all' }
 -   id: ant1
     label: 'Ch1: Antenna'
     category: RF Options
