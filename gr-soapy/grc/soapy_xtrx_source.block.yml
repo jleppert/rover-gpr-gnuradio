@@ -1,7 +1,7 @@
 ---
 
-id: soapy_xtrxpro_source
-label: Soapy XTRXPro Source
+id: soapy_xtrx_source
+label: Soapy XTRX Source
 flags: [python, throttle]
 
 parameters:
